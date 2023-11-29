@@ -57,8 +57,30 @@
 
 	<ItemGroup>
 	  <None Remove="ViewModels\" />
+	  <None Remove="Resources\Languages\" />
+	  <None Remove="Extensions\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="ViewModels\" />
+	  <Folder Include="Resources\Languages\" />
+	  <Folder Include="Extensions\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Languages\AppResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Languages\AppResources.fr.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppResources.fr.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\Languages\AppResources.fr.Designer.cs">
+	    <DependentUpon>AppResources.fr.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Languages\AppResources.Designer.cs">
+	    <DependentUpon>AppResources.resx</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>
