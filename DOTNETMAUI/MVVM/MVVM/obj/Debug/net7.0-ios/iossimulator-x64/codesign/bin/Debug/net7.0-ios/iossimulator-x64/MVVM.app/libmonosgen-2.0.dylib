@@ -1,0 +1,1 @@
+-v --force --timestamp=none --sign - /Users/bg/Work/AlphaTech/Git/Maui/MVVM/MVVM/bin/Debug/net7.0-ios/iossimulator-x64/MVVM.app/libmonosgen-2.0.dylib
