@@ -12,11 +12,11 @@ public partial class App : Application
 		MainPage = new AppShell();
     }
 
-    protected async override void OnAppLinkRequestReceived(Uri uri)
+    protected  override void OnAppLinkRequestReceived(Uri uri)
     {
         base.OnAppLinkRequestReceived(uri);
 
-        if(uri.Host.ToLower() == "yourdomain" && uri.Segments != null && uri.Segments.Length == 3)
+        if((uri.Host.ToLower() == "yourdomain" || uri.Host.ToLower() == "yourdomain.com") && uri.Segments != null && uri.Segments.Length == 3)
         {
             string action = uri.Segments.ElementAt(1).Replace("/", "");
             bool isActionParamsValid = long.TryParse(uri.Segments.ElementAt(2), out long productionId);
@@ -26,11 +26,11 @@ public partial class App : Application
                 {
                     // Navigate to your productdetails page
                     //Shell.Current.GoToAsync($"//{nameof(NewPage1)}/productionId/{productionId}");
-                    await Shell.Current.GoToAsync($"{nameof(NewPage1)}/productdetails?id={productionId}");
+                     Shell.Current.GoToAsync($"{nameof(NewPage1)}/productdetails");
                 }
                 else
                 {
-                    await Shell.Current.GoToAsync($"{nameof(MainPage)}");
+                    Shell.Current.GoToAsync($"{nameof(MainPage)}");
                 }
             }
 
