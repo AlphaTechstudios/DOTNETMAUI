@@ -1,4 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
+using OpenPDF.Interfaces;
+
+#if ANDROID
+using OpenPDF.Platforms.Android.Services;
+
+#elif IOS
+using OpenPDF.Platforms.iOS.Services;
+
+#endif
 
 namespace OpenPDF;
 
@@ -19,6 +28,12 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
+
+#if ANDROID
+        builder.Services.AddTransient<IFilesService, FilesService>();
+#elif IOS
+        builder.Services.AddTransient<IFilesService, FilesService>();
+#endif
+        return builder.Build();
 	}
 }
